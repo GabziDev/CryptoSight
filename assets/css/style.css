@@ -145,7 +145,7 @@ nav .content .right a:hover {
 ========>         FOOTER        <========
 ****************************************/
 footer {
-    height: 350px;
+    min-height: 350px;
 }
 
 footer .content {
@@ -160,7 +160,7 @@ footer .content .top {
 }
 
 footer .content .top .left {
-    width: 500px;
+    max-width: 500px;
 }
 
 footer .content .top .left h4 {
@@ -195,4 +195,25 @@ footer .content .bot {
 footer .content .bot p {
     font-family: Montserrat-Light;
     color: var(--gray-color);
+}
+
+@media screen and (max-width: 835px) {
+    footer .content .top {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2vh;
+    }
+
+    footer .content .top .left {
+        margin: auto;
+    }
+
+    footer .content .top .right {
+        margin: auto;
+    }
+
+    footer .content .bot p {
+        text-align: center;
+    }
 }

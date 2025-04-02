@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Chart - CryptoSight</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script src="assets/js/lib/luxon.js"></script>
+    <script src="assets/js/lib/chart.umd.js"></script>
+    <script src="assets/js/lib/chartjs-adapter-luxon.js"></script>
+    <script src="assets/js/lib/chartjs-chart-financial.js"></script>
+</head>
+<style>
+    .test {
+        margin: 10vh auto;
+        max-width: 900px;
+        max-height: 530px;
+    }
+</style>
+
+<body>
+    <div class="test">
+        <canvas id="chartLigne"></canvas>
+    </div>
+    <div class="test">
+        <canvas id="chartBougie"></canvas>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            chartLigne();
+            chartBougie();
+        });
+
+        const barData = [
+            { x: 1709251200000, o: 96, h: 105, l: 91, c: 96 },
+            { x: 1709337600000, o: 98, h: 111, l: 87, c: 109 },
+            { x: 1709424000000, o: 104, h: 116, l: 95, c: 97 },
+            { x: 1709510400000, o: 100, h: 112, l: 85, c: 112 },
+            { x: 1709596800000, o: 114, h: 127, l: 108, c: 127 },
+            { x: 1709683200000, o: 126, h: 133, l: 112, c: 123 },
+            { x: 1709769600000, o: 125, h: 132, l: 110, c: 123 },
+            { x: 1709856000000, o: 126, h: 133, l: 111, c: 126 },
+            { x: 1709942400000, o: 125, h: 135, l: 114, c: 123 },
+            { x: 1710028800000, o: 122, h: 131, l: 115, c: 131 },
+            { x: 1710115200000, o: 127, h: 140, l: 112, c: 131 },
+            { x: 1710201600000, o: 133, h: 143, l: 121, c: 137 },
+            { x: 1710288000000, o: 135, h: 141, l: 129, c: 130 },
+            { x: 1710374400000, o: 127, h: 138, l: 121, c: 138 },
+            { x: 1710460800000, o: 139, h: 153, l: 130, c: 134 },
+            { x: 1710547200000, o: 139, h: 144, l: 126, c: 128 },
+            { x: 1710633600000, o: 124, h: 139, l: 117, c: 138 },
+            { x: 1710720000000, o: 136, h: 146, l: 123, c: 125 },
+            { x: 1710806400000, o: 125, h: 139, l: 116, c: 129 },
+            { x: 1710892800000, o: 134, h: 145, l: 119, c: 142 },
+            { x: 1710979200000, o: 147, h: 153, l: 142, c: 143 },
+            { x: 1711065600000, o: 143, h: 158, l: 136, c: 136 },
+            { x: 1711152000000, o: 137, h: 145, l: 132, c: 139 },
+            { x: 1711238400000, o: 142, h: 157, l: 128, c: 144 },
+            { x: 1711324800000, o: 146, h: 161, l: 135, c: 155 },
+            { x: 1711411200000, o: 150, h: 162, l: 141, c: 162 },
+            { x: 1711497600000, o: 160, h: 175, l: 154, c: 162 },
+            { x: 1711584000000, o: 165, h: 179, l: 152, c: 175 },
+            { x: 1711670400000, o: 173, h: 184, l: 166, c: 170 },
+            { x: 1711756800000, o: 175, h: 92, l: 164, c: 102 },
+            { x: 1711843200000, o: 172, h: 180, l: 158, c: 862 },
+        ];
+
+        /**
+         * Chart en bougie
+         */
+        function chartBougie() {
+            const ctx = document.getElementById('chartBougie');
+
+            new Chart(ctx, {
+                type: 'candlestick',
+                data: {
+                    datasets: [{
+                        data: barData,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: { display: false },
+                    },
+                    scales: {
+                        x: {
+                            type: 'timeseries',
+                            grid: { color: 'transparent' },
+                            ticks: { color: '#9CA3AF' }
+                        },
+                        y: {
+                            type: 'linear',
+                            grid: { color: '#9CA3AF20' },
+                            ticks: { color: '#9CA3AF' }
+                        }
+                    }
+                }
+            });
+        }
+
+        /**
+         * Chart en ligne
+         */
+        function chartLigne() {
+            const ctx = document.getElementById('chartLigne');
+            const lineData = barData.map(point => ({ x: point.x, y: point.c }));
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    //labels: ['10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00', '00:00', '02:00', '04:00', '06:00', '08:00', '10:00'],
+                    datasets: [{
+                        //data: [12, 19, 3, 5, 30, 29, 35, 40, 50, 70, 0.05, 3, 100],
+                        data: lineData,
+                        borderColor: getComputedStyle(document.documentElement).getPropertyValue('--purple-color'),
+                        borderWidth: 2,
+                        tension: 0.3,
+                        pointRadius: 0,
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                    },
+                    scales: {
+                        x: {
+                            type: 'timeseries',
+                            grid: {
+                                color: (context) => {
+                                    return context.index === 0 ? '#9CA3AF20' : 'transparent';
+                                },
+                            },
+                            ticks: {
+                                color: '#9CA3AF'
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: '#9CA3AF20'
+                            },
+                            ticks: {
+                                color: '#9CA3AF'
+                            },
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

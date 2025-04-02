@@ -39,7 +39,7 @@ body {
     font-family: Montserrat-Regular;
 }
 
-a {
+a, button {
     font-size: 15px;
     color: var(--gray-color)
 }
@@ -94,6 +94,24 @@ h1 {
 
 .coinGeckoBtn:hover {
     opacity: 1;
+}
+
+.purpleNeonBtn {
+    cursor: pointer;
+    padding: 0.7em 1em;
+    border-radius: 0.5em;
+    min-height: 2.4em;
+    min-width: 3em;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+    background-color: var(--purple-color);
+    color: var(--white-color);
+    border: 0;
+    box-shadow: inset 1px 10px 10px #ffffff40;
+
 }
 
 /****************************************

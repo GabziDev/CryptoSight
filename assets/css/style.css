@@ -127,6 +127,7 @@ h1 {
 }
 
 .purpleNeonBtn {
+    font-family: Montserrat-Regular;
     cursor: pointer;
     padding: 0.7em 2.5em;
     border-radius: 0.5em;
@@ -149,6 +150,7 @@ h1 {
 }
 
 .purpleBtn {
+    font-family: Montserrat-Regular;
     height: 30px;
     padding: 0 10px;
     cursor: pointer;
@@ -166,6 +168,7 @@ h1 {
 }
 
 .grayBtn {
+    font-family: Montserrat-Regular;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -256,9 +259,8 @@ h1 {
     display: flex;
     align-items: center;
     position: relative;
-    max-width: 190px;
-    max-height: 30px;
-    height: 100%;
+    width: 190px;
+    height: 34px;
 }
 
 .search .input {
@@ -339,8 +341,7 @@ nav .content .right a:hover {
 /****************************************
 ========>          MAIN         <========
 ****************************************/
-main {
-}
+main {}
 
 /************************
 ====>  CRYPTO LIST  <====
@@ -378,6 +379,155 @@ main {
 .cryptocontainer .footer #pagination {
     display: flex;
     gap: 2px;
+}
+
+/************************
+====>  CRYPTO VIEW  <====
+************************/
+.cryptochartcontainer {
+    width: 100%;
+    margin: 150px 0 150px;
+}
+
+.cryptochartcontainer .head {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    align-items: center;
+}
+
+.cryptochartcontainer .head .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cryptochartcontainer .head .left .top {
+    display: flex;
+    align-items: center;
+    gap: 1vh;
+}
+
+.cryptochartcontainer .head .left .top img {
+    height: 20px;
+}
+
+.cryptochartcontainer .head .left .top h6 {
+    font-family: Roboto-Regular;
+}
+
+.cryptochartcontainer .head .left .top p {
+    font-family: Roboto-Light;
+}
+
+.cryptochartcontainer .head .left .top #cryptoSymbol {
+    color: var(--gray-color)
+}
+
+.cryptochartcontainer .head .left .top #cryptoPosition {
+    background-color: #9CA3AF20;
+    padding: 3px;
+    border-radius: 5px;
+    font-size: 10px;
+    font-family: Roboto-Regular;
+}
+
+.cryptochartcontainer .head .left .bot {
+    display: flex;
+    align-items: center;
+    gap: 4vh;
+}
+
+.cryptochartcontainer .head .left .bot h4 {
+    font-family: Roboto-Medium;
+}
+
+.cryptochartcontainer .bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cryptochartcontainer .bottom .left {
+    flex: 1;
+}
+
+.cryptochartcontainer .bottom .left .options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+}
+
+.cryptochartcontainer .bottom .right {
+    width: 280px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cryptochartcontainer .bottom .right .infos {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+.cryptochartcontainer .bottom .right .infos .info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cryptochartcontainer .bottom .right .links {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+.cryptochartcontainer .bottom .right .links .link {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cryptochartcontainer .bottom .right .infos h5,
+.cryptochartcontainer .bottom .right .links h5,
+.cryptochartcontainer .bottom .right .about h5 {
+    font-family: Montserrat-Regular;
+}
+
+.cryptochartcontainer .bottom .right .infos .info .key,
+.cryptochartcontainer .bottom .right .links .link .key {
+    font-family: Montserrat-Regular;
+    color: var(--gray-color)
+}
+
+.cryptochartcontainer .bottom .right .infos .info .value,
+.cryptochartcontainer .bottom .right .links .link .value {
+    color: var(--white-color);
+    font-family: Roboto-Light;
+    font-weight: 100;
+}
+
+.cryptochartcontainer .bottom .right .links .link a {
+    background-color: #9CA3AF30;
+    padding: 0 10px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: var(--transition-hover);
+}
+
+.cryptochartcontainer .bottom .right .links .link a:hover {
+    background-color: #9CA3AF70;
+}
+
+.cryptochartcontainer .bottom .right .about p {
+    color: var(--gray-color);
+    font-family: Roboto-Light;
+    font-weight: 100;
+    font-size: 13px;
 }
 
 /******************
@@ -461,24 +611,20 @@ table {
     font-size: 14px;
 }
 
-/*1h% 24h% 7j%*/
-.cryptocontainer table tbody tr td:nth-child(5),
-.cryptocontainer table tbody tr td:nth-child(6),
-.cryptocontainer table tbody tr td:nth-child(7) {
+/*24h%*/
+.cryptocontainer table tbody tr td:nth-child(5) {
     font-family: Roboto-Light;
     font-size: 14px;
     gap: 10px;
 }
 
-.cryptocontainer table tbody tr td:nth-child(5) img,
-.cryptocontainer table tbody tr td:nth-child(6) img,
-.cryptocontainer table tbody tr td:nth-child(7) img {
+.cryptocontainer table tbody tr td:nth-child(5) img {
     margin-right: 3px;
 }
 
 /*Capitalisation Circulation*/
-.cryptocontainer table tbody tr td:nth-child(8),
-.cryptocontainer table tbody tr td:nth-child(9) {
+.cryptocontainer table tbody tr td:nth-child(6),
+.cryptocontainer table tbody tr td:nth-child(7) {
     font-family: Roboto-Light;
     font-size: 14px;
 }
@@ -496,10 +642,10 @@ tr {
 .cryptocontainer table td:nth-child(3),
 .cryptocontainer table th:nth-child(4),
 .cryptocontainer table td:nth-child(4),
-.cryptocontainer table th:nth-child(8),
-.cryptocontainer table td:nth-child(8),
-.cryptocontainer table th:nth-child(9),
-.cryptocontainer table td:nth-child(9) {
+.cryptocontainer table tr th:nth-child(6),
+.cryptocontainer table tr td:nth-child(6),
+.cryptocontainer table tr th:nth-child(7),
+.cryptocontainer table tr td:nth-child(7) {
     text-align: left;
 }
 
@@ -520,23 +666,45 @@ tr {
 }
 
 .cryptocontainer table colgroup col:nth-child(5) {
-    width: 10%;
+    width: 30%;
 }
 
 .cryptocontainer table colgroup col:nth-child(6) {
-    width: 10%;
-}
-
-.cryptocontainer table colgroup col:nth-child(7) {
-    width: 10%;
-}
-
-.cryptocontainer table colgroup col:nth-child(8) {
     width: 14%;
 }
 
-.cryptocontainer table colgroup col:nth-child(9) {
+.cryptocontainer table colgroup col:nth-child(7) {
     width: 13%;
+}
+
+@media screen and (max-width: 850px) {
+
+    .cryptocontainer table th:nth-child(6),
+    .cryptocontainer table td:nth-child(6),
+    .cryptocontainer table th:nth-child(7),
+    .cryptocontainer table td:nth-child(7) {
+        display: none;
+    }
+
+    .cryptocontainer table colgroup col:nth-child(1) {
+        width: 5%;
+    }
+
+    .cryptocontainer table colgroup col:nth-child(2) {
+        width: 10%;
+    }
+
+    .cryptocontainer table colgroup col:nth-child(3) {
+        width: 35%;
+    }
+
+    .cryptocontainer table colgroup col:nth-child(4) {
+        width: 20%;
+    }
+
+    .cryptocontainer table colgroup col:nth-child(5) {
+        width: 30%;
+    }
 }
 
 /****************************************

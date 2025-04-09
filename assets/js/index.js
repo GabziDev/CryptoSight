@@ -39,19 +39,7 @@ const renderTable = () => {
                     <span class="symbole">${coin.symbol.toUpperCase()}</span>
                 </div>
             </td>
-            <td>$${coin.current_price.toLocaleString()}</td>
-            <td>
-                <div class="${coin.price_change_percentage_24h >= 0 ? 'priceUp' : 'priceDown'}">
-                    <img src="assets/svg/${coin.price_change_percentage_24h >= 0 ? 'Up' : 'Down'}.svg" alt="${coin.price_change_percentage_24h >= 0 ? 'Hausse' : 'Baisse'} de prix">
-                    ${coin.price_change_percentage_24h.toFixed(2)}%
-                </div>
-            </td>
-            <td>
-                <div class="${coin.price_change_percentage_24h >= 0 ? 'priceUp' : 'priceDown'}">
-                    <img src="assets/svg/${coin.price_change_percentage_24h >= 0 ? 'Up' : 'Down'}.svg" alt="${coin.price_change_percentage_24h >= 0 ? 'Hausse' : 'Baisse'} de prix">
-                    ${coin.price_change_percentage_24h.toFixed(2)}%
-                </div>
-            </td>
+            <td>$${coin.current_price}</td>
             <td>
                 <div class="${coin.price_change_percentage_24h >= 0 ? 'priceUp' : 'priceDown'}">
                     <img src="assets/svg/${coin.price_change_percentage_24h >= 0 ? 'Up' : 'Down'}.svg" alt="${coin.price_change_percentage_24h >= 0 ? 'Hausse' : 'Baisse'} de prix">
@@ -61,6 +49,9 @@ const renderTable = () => {
             <td>${formatCurrency(coin.market_cap)}</td>
             <td>${formatNumber(coin.circulating_supply) + " " + coin.symbol.toUpperCase()}</td>
         `;
+        tr.addEventListener("click", e => {
+            location.href = "view.html?coin=" + coin.id;
+        });
         tbody.appendChild(tr);
     });
     updateFooter();
@@ -104,7 +95,6 @@ const renderPagination = () => {
     rightBtn.addEventListener("click", () => changePage(currentPage + 1));
     paginationContainer.appendChild(rightBtn);
 };
-
 
 const changePage = (page) => {
     let totalPages = Math.ceil(data.length / itemsPerPage);

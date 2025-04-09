@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{Nom crypto} Crypto - CryptoSight</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/crypto.js" type="module"></script>
+    <script src="assets/js/lib/luxon.js"></script>
+    <script src="assets/js/lib/chart.umd.js"></script>
+    <script src="assets/js/lib/chartjs-adapter-luxon.js"></script>
+    <script src="assets/js/lib/chartjs-chart-financial.js"></script>
+</head>
+
+<body>
+    <nav>
+        <div class="content">
+            <div class="left">
+                <img src="assets/svg/Logo.svg" alt="Logo de CryptoSight">
+                <h2>CryptoSight</h2>
+            </div>
+            <div class="right">
+                <a href="/">&lt; Retourner en arrière</a>
+                <a href="#">Mon compte</a>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="content">
+            <div class="cryptochartcontainer">
+                <div class="head">
+                    <div class="left">
+                        <div class="top">
+                            <img src="" id="cryptoImage">
+                            <h6 id="cryptoNom"></h6>
+                            <p id="cryptoSymbol"></p>
+                            <div class="tag" id="cryptoPosition">#</div>
+                        </div>
+                        <div class="bot">
+                            <h4 id="cryptoPrice"></h4>
+                            <div class="priceUp" id="crypto">
+                                <img src="assets/svg/Up.svg"
+                                    alt="${coin.price_change_percentage_24h >= 0 ? 'Hausse' : 'Baisse'} de prix">
+                                0.50%
+                            </div>
+                        </div>
+                    </div>
+                    <button class="grayBtn">
+                        <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M1.08731 7.24264L7 14L12.9127 7.24264C13.6089 6.44699 14 5.36786 14 4.24264V4.05234C14 1.8143 12.4125 0 10.4542 0C9.37702 0 8.35829 0.55959 7.6854 1.52086L7 2.5L6.3146 1.52086C5.64171 0.55959 4.62296 0 3.5458 0C1.58751 0 0 1.8143 0 4.05234V4.24264C0 5.36786 0.391116 6.44699 1.08731 7.24264Z" />
+                        </svg>
+                        Ajouter aux favoris
+                    </button>
+                </div>
+                <div class="bottom">
+                    <div class="left">
+                        <div class="options">
+                            <div class="links">
+                                <button class="purpleBtn active">24h</button>
+                                <button class="purpleBtn">7j</button>
+                                <button class="purpleBtn">1m</button>
+                                <button class="purpleBtn">3m</button>
+                                <button class="purpleBtn">1an</button>
+                            </div>
+                            <div class="links">
+                                <button class="purpleBtn active" data-typechart="line">Vue en ligne</button>
+                                <button class="purpleBtn" data-typechart="candle">Vue en bougie</button>
+                            </div>
+                        </div>
+                        <div class="chart">
+                            <canvas id="chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="infos">
+                            <div class="info">
+                                <p class="key">Premier bloc</p>
+                                <p class="value" id="cryptoGenesis">01-12-2012</p>
+                            </div>
+                            <div class="info">
+                                <p class="key">Capitalisation</p>
+                                <p class="value" id="cryptoCaptitalisation">$1,908,527,005,878</p>
+                            </div>
+                            <div class="info">
+                                <p class="key">Circulation</p>
+                                <p class="value" id="cryptoCirculation">19.25M BTC</p>
+                            </div>
+                        </div>
+                        <div class="links">
+                            <h5>Liens</h5>
+                            <div class="link">
+                                <p class="key">Site web</p><a class="value" id="cryptoWebsite" href="">https://link....</a>
+                            </div>
+                            <div class="link">
+                                <p class="key">Papier Blanc</p><a class="value"
+                                    id="cryptoWhitePaper" href="">https://link....</a>
+                            </div>
+                            <div class="link">
+                                <p class="key">X</p><a class="value" id="cryptoTwitter" href="">@blablab...</a>
+                            </div>
+                            <div class="link">
+                                <p class="key">Facebook</p><a class="value" id="cryptoFacebook" href="">@blablab...</a>
+                            </div>
+                            <div class="link">
+                                <p class="key">Telegram</p><a class="value" id="cryptoTelegram" href="">t/...</a>
+                            </div>
+                            <div class="link">
+                                <p class="key">Github</p><a class="value" id="cryptoGithub" href="">https://...</a>
+                            </div>
+                        </div>
+                        <div class="about">
+                            <h5>À Propos</h5>
+                            <p id="cryptoDesc">Lorem ipsum odor amet, consectetuer adipiscing elit. Pharetra etiam porttitor dis magna
+                                volutpat. Urna dignissim sed semper lacinia consectetur lacus mus. Netus ultricies
+                                sagittis vel porta magna bibendum. Cras ullamcorper odio curae primis gravida
+                                parturient. Netus risus lacinia mollis quis montes. Netus dis porta himenaeos convallis
+                                in nibh praesent porttitor.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="content">
+            <div class="top">
+                <div class="left">
+                    <h4>À Propos</h4>
+                    <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Platea mi molestie aliquam sem elementum
+                        proin sapien. Orci curae porttitor, hendrerit mi fringilla potenti fringilla. Facilisi himenaeos
+                        eu dis dui mauris. Maximus ultricies tristique sem, leo fames ligula semper nisl. Dictumst non
+                        in mattis consequat parturient sollicitudin, rhoncus proin hendrerit. Lectus habitant sapien ut
+                        curae venenatis et pellentesque. Est nam massa blandit efficitur eleifend. Leo augue purus
+                        phasellus consequat mollis turpis inceptos condimentum cras.</p>
+                </div>
+                <div class="right">
+                    <a href="https://www.coingecko.com/en/api" class="coinGeckoBtn">
+                    </a>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="bot">
+                <p>© 2025 CryptoSight. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

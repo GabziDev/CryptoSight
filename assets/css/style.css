@@ -400,6 +400,7 @@ main {}
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 70%;
 }
 
 .cryptochartcontainer .head .left .top {
@@ -435,11 +436,30 @@ main {}
 .cryptochartcontainer .head .left .bot {
     display: flex;
     align-items: center;
-    gap: 4vh;
+    gap: 2vh;
 }
 
 .cryptochartcontainer .head .left .bot h4 {
     font-family: Roboto-Medium;
+}
+
+.cryptochartcontainer .head .mid {
+    height: 70%;
+    display: flex;
+    justify-content: space-between;
+    gap: 4vh;
+}
+
+.cryptochartcontainer .head .mid .item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.cryptochartcontainer .head .mid .item p {
+    font-family: Montserrat-Light;
+    color: var(--gray-color);
 }
 
 .cryptochartcontainer .bottom {

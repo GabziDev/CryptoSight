@@ -1,3 +1,5 @@
+import { formatCurrency, formatNumber } from './utils.js';
+
 const baseUrl = `https://api.coingecko.com/api/v3/coins/`;
 let barData = [];
 let chartInstance = null;
@@ -11,33 +13,34 @@ async function fetchData() {
     const data = await response.json();
     console.log(data);
 
-    /*
-    "price_change_percentage_24h": -2.23103,
-    "price_change_percentage_7d": -8.65587,
-    "price_change_percentage_14d": -12.10098,
-    "price_change_percentage_30d": -4.89036,
-    "price_change_percentage_60d": -19.36154,
-    "price_change_percentage_200d": 22.69007,
-    "price_change_percentage_1y": 9.59293
-    */
-
     if (response.ok) {
         document.getElementById("cryptoImage").src = data.image.small;
         document.getElementById("cryptoNom").textContent = data.name;
         document.getElementById("cryptoSymbol").textContent = data.symbol;
         document.getElementById("cryptoPosition").textContent = "#" + data.market_cap_rank;
-        document.getElementById("cryptoPrice").textContent = "$" + data.market_data.current_price.usd;
+        document.getElementById("cryptoPrice").textContent = formatCurrency(data.market_data.current_price.usd);
         document.getElementById("cryptoGenesis").textContent = data.genesis_date;
-        document.getElementById("cryptoCaptitalisation").textContent = "$" + data.market_data.market_cap.usd;
-        document.getElementById("cryptoCirculation").textContent = coin.circulating_supply + " " + coin.symbol.toUpperCase();
-        /*
-        document.getElementById("#cryptoWebsite").innerText;
-        document.getElementById("#cryptoWhitePaper").innerText;
-        document.getElementById("#cryptoTwitter").innerText;
-        document.getElementById("#cryptoFacebook").innerText;
-        document.getElementById("#cryptoTelegram").innerText;
-        document.getElementById("#cryptoGithub").innerText;
-        document.getElementById("#cryptoDesc").innerText;*/
+        document.getElementById("cryptoCaptitalisation").textContent = formatCurrency(data.market_data.market_cap.usd);
+        document.getElementById("cryptoCirculation").textContent = formatNumber(data.market_data.circulating_supply) + " " + data.symbol.toUpperCase();
+
+        document.getElementById("1hPer").textContent = data.market_data.price_change_percentage_1h_in_currency.usd.toFixed(2) + "%";
+        const price1h = data.market_data.price_change_percentage_1h_in_currency.usd >= 0 ? "Up" : "Down";
+        document.getElementById("1hPerImage").src = `assets/svg/${price1h}.svg`;
+        document.getElementById("1hPerPrice").classList.add("price" + price1h);
+
+        document.getElementById("1hPer2").textContent = data.market_data.price_change_percentage_1h_in_currency.usd.toFixed(2) + "%";
+        document.getElementById("1hPerImage2").src = `assets/svg/${price1h}.svg`;
+        document.getElementById("1hPerPrice2").classList.add("price" + price1h);
+
+        document.getElementById("24hPer").textContent = data.market_data.price_change_percentage_24h_in_currency.usd.toFixed(2) + "%";
+        const price24h = data.market_data.price_change_percentage_24h_in_currency.usd >= 0 ? "Up" : "Down";
+        document.getElementById("24hPerImage").src = `assets/svg/${price24h}.svg`;
+        document.getElementById("24hPerPrice").classList.add("price" + price24h);
+
+        document.getElementById("7dPer").textContent = data.market_data.price_change_percentage_7d_in_currency.usd.toFixed(2) + "%";
+        const price7j = data.market_data.price_change_percentage_7d_in_currency.usd >= 0 ? "Up" : "Down";
+        document.getElementById("7dPerImage").src = `assets/svg/${price7j}.svg`;
+        document.getElementById("7dPerPrice").classList.add("price" + price7j);
     }
 }
 
@@ -59,7 +62,7 @@ async function fetchDataChart(days = 1) {
                 c: d[4]
             })
         });
-    
+
         if (chartType === 'line') {
             chartLigne();
         } else {

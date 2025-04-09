@@ -1,12 +1,11 @@
+import { formatCurrency, formatNumber } from './utils.js';
+
 const tbody = document.querySelector("table tbody");
 const paginationContainer = document.getElementById("pagination");
 const url = new URL("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=250&page=1&x_cg_demo_api_key=CG-Fbk1zYKeAXcSxq7VcAxusyVE");
 const itemsPerPage = 12;
 let currentPage = 1;
 let data = [];
-
-const formatCurrency = (amount) => "$" + amount.toLocaleString();
-const formatNumber = (num) => num >= 1_000_000 ? (num / 1_000_000).toFixed(2) + "M" : num >= 1_000 ? (num / 1_000).toFixed(2) + "K" : num;
 
 const fetchData = async () => {
     let response = await fetch(url);

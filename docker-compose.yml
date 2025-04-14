@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  db: # Base de données
+    image: mariadb:11.3
+    container_name: mariadb_cryptosight
+    restart: always
+    env_file: .env
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      MARIADB_DATABASE: ${MYSQL_DATABASE}
+      MARIADB_USER: ${MYSQL_USER}
+      MARIADB_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - ./database/CryptoSight.sql:/docker-entrypoint-initdb.d/init.sql
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  server: # Front end + Back end
+    build: . 
+    container_name: nodejs_cryptosight
+    restart: always
+    depends_on:
+      - db
+    env_file: .env
+    environment:
+      MYSQL_HOST: db
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./server:/app/server
+      - ./public:/app/public
+      - /app/server/node_modules
+      - .env:/app/server/.env
+
+volumes:
+  db_data:

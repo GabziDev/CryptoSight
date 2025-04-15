@@ -23,6 +23,7 @@ async function fetchData() {
         document.getElementById("cryptoCaptitalisation").textContent = formatCurrency(data.market_data.market_cap.usd);
         document.getElementById("cryptoCirculation").textContent = formatNumber(data.market_data.circulating_supply) + " " + data.symbol.toUpperCase();
 
+        /*
         document.getElementById("1hPer").textContent = data.market_data.price_change_percentage_1h_in_currency.usd.toFixed(2) + "%";
         const price1h = data.market_data.price_change_percentage_1h_in_currency.usd >= 0 ? "Up" : "Down";
         document.getElementById("1hPerImage").src = `assets/svg/${price1h}.svg`;
@@ -39,6 +40,25 @@ async function fetchData() {
 
         document.getElementById("7dPer").textContent = data.market_data.price_change_percentage_7d_in_currency.usd.toFixed(2) + "%";
         const price7j = data.market_data.price_change_percentage_7d_in_currency.usd >= 0 ? "Up" : "Down";
+        document.getElementById("7dPerImage").src = `assets/svg/${price7j}.svg`;
+        document.getElementById("7dPerPrice").classList.add("price" + price7j);*/
+
+        document.getElementById("1hPer").textContent = data.market_data?.price_change_percentage_1h_in_currency?.usd != null ? data.market_data.price_change_percentage_1h_in_currency.usd.toFixed(2) + "%" : 'N/A';
+        const price1h = data.market_data?.price_change_percentage_1h_in_currency?.usd >= 0 ? "Up" : "Down";
+        document.getElementById("1hPerImage").src = `assets/svg/${price1h}.svg`;
+        document.getElementById("1hPerPrice").classList.add("price" + price1h);
+
+        document.getElementById("1hPer2").textContent = data.market_data?.price_change_percentage_1h_in_currency?.usd != null ? data.market_data.price_change_percentage_1h_in_currency.usd.toFixed(2) + "%" : 'N/A';
+        document.getElementById("1hPerImage2").src = `assets/svg/${price1h}.svg`;
+        document.getElementById("1hPerPrice2").classList.add("price" + price1h);
+
+        document.getElementById("24hPer").textContent = data.market_data?.price_change_percentage_24h_in_currency?.usd != null ? data.market_data.price_change_percentage_24h_in_currency.usd.toFixed(2) + "%" : 'N/A';
+        const price24h = data.market_data?.price_change_percentage_24h_in_currency?.usd >= 0 ? "Up" : "Down";
+        document.getElementById("24hPerImage").src = `assets/svg/${price24h}.svg`;
+        document.getElementById("24hPerPrice").classList.add("price" + price24h);
+
+        document.getElementById("7dPer").textContent = data.market_data?.price_change_percentage_7d_in_currency?.usd != null ? data.market_data.price_change_percentage_7d_in_currency.usd.toFixed(2) + "%" : 'N/A';
+        const price7j = data.market_data?.price_change_percentage_7d_in_currency?.usd >= 0 ? "Up" : "Down";
         document.getElementById("7dPerImage").src = `assets/svg/${price7j}.svg`;
         document.getElementById("7dPerPrice").classList.add("price" + price7j);
     }
@@ -130,9 +150,7 @@ function chartLigne() {
     chartInstance = new Chart(ctx, {
         type: 'line',
         data: {
-            //labels: ['10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00', '00:00', '02:00', '04:00', '06:00', '08:00', '10:00'],
             datasets: [{
-                //data: [12, 19, 3, 5, 30, 29, 35, 40, 50, 70, 0.05, 3, 100],
                 data: lineData,
                 borderColor: getComputedStyle(document.documentElement).getPropertyValue('--purple-color'),
                 borderWidth: 2,

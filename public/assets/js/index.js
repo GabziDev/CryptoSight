@@ -40,9 +40,9 @@ const renderTable = () => {
             </td>
             <td>$${coin.current_price}</td>
             <td>
-                <div class="${coin.price_change_percentage_24h >= 0 ? 'priceUp' : 'priceDown'}">
-                    <img src="assets/svg/${coin.price_change_percentage_24h >= 0 ? 'Up' : 'Down'}.svg" alt="${coin.price_change_percentage_24h >= 0 ? 'Hausse' : 'Baisse'} de prix">
-                    ${coin.price_change_percentage_24h.toFixed(2)}%
+                <div class="${coin.price_change_percentage_24h != null && coin.price_change_percentage_24h >= 0 ? 'priceUp' : 'priceDown'}">
+                    <img src="assets/svg/${coin.price_change_percentage_24h != null && coin.price_change_percentage_24h >= 0 ? 'Up' : 'Down'}.svg" alt="${coin.price_change_percentage_24h != null && coin.price_change_percentage_24h >= 0 ? 'Hausse' : 'Baisse'} de prix">
+                    ${coin.price_change_percentage_24h != null ? coin.price_change_percentage_24h.toFixed(2) : 'N/A'}%
                 </div>
             </td>
             <td>${formatCurrency(coin.market_cap)}</td>

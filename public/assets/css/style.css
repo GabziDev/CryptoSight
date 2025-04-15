@@ -209,6 +209,15 @@ h1 {
     fill: var(--gray-color);
 }
 
+.grayBtn.activeHeart {
+    background-color: #EF444450;
+    color: #EF444470;
+}
+
+.grayBtn.activeHeart svg {
+    fill: #EF444470;
+}
+
 .heartBtn {
     height: 20px;
     width: 20px;

@@ -6,10 +6,24 @@ const url = new URL("https://api.coingecko.com/api/v3/coins/markets?vs_currency=
 const itemsPerPage = 12;
 let currentPage = 1;
 let data = [];
+let filteredData = []; 
+
+const searchInput = document.getElementById("searchInput");
+searchInput.addEventListener("input", (e) => {
+    const searchQuery = e.target.value.toLowerCase();
+    filteredData = data.filter(coin => 
+        coin.name.toLowerCase().includes(searchQuery) ||
+        coin.symbol.toLowerCase().includes(searchQuery)
+    );
+    currentPage = 1;
+    renderTable();
+    renderPagination();
+});
 
 const fetchData = async () => {
     let response = await fetch(url);
     data = await response.json();
+    filteredData = [...data];
     renderTable();
     renderPagination();
 }
@@ -18,7 +32,7 @@ const renderTable = () => {
     tbody.innerHTML = "";
     let start = (currentPage - 1) * itemsPerPage;
     let end = start + itemsPerPage;
-    let paginatedData = data.slice(start, end);
+    let paginatedData = filteredData.slice(start, end); 
 
     paginatedData.forEach((coin, index) => {
         let tr = document.createElement("tr");
@@ -57,14 +71,14 @@ const renderTable = () => {
 };
 
 const updateFooter = () => {
-    document.querySelector(".footer #totalcrypto").textContent = data.length;
+    document.querySelector(".footer #totalcrypto").textContent = filteredData.length;  // Mettre à jour le nombre total de résultats filtrés
     document.querySelector(".footer p #first").textContent = (currentPage - 1) * itemsPerPage + 1;
-    document.querySelector(".footer p #last").textContent = Math.min(currentPage * itemsPerPage, data.length);
+    document.querySelector(".footer p #last").textContent = Math.min(currentPage * itemsPerPage, filteredData.length);
 };
 
 const renderPagination = () => {
     paginationContainer.innerHTML = "";
-    let totalPages = Math.ceil(data.length / itemsPerPage);
+    let totalPages = Math.ceil(filteredData.length / itemsPerPage);  // Calculer les pages en fonction des résultats filtrés
     let startPage = Math.max(1, currentPage - 2);
     let endPage = Math.min(totalPages, startPage + 4);
 
@@ -96,7 +110,7 @@ const renderPagination = () => {
 };
 
 const changePage = (page) => {
-    let totalPages = Math.ceil(data.length / itemsPerPage);
+    let totalPages = Math.ceil(filteredData.length / itemsPerPage);
     if (page >= 1 && page <= totalPages) {
         currentPage = page;
         renderTable();

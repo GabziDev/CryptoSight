@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{Nom crypto} Crypto - CryptoSight</title>
+    <title>Crypto - CryptoSight</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="assets/js/crypto.js" type="module"></script>
     <script src="assets/js/lib/luxon.js"></script>
@@ -14,6 +14,7 @@
 </head>
 
 <body>
+    <div id="modals"></div>
     <nav>
         <div class="content">
             <div class="left">
@@ -35,7 +36,7 @@
                             <img src="" id="cryptoImage">
                             <h6 id="cryptoNom"></h6>
                             <p id="cryptoSymbol"></p>
-                            <div class="tag" id="cryptoPosition">#</div>
+                            <div class="tag" id="cryptoPosition"></div>
                         </div>
                         <div class="bot">
                             <h4 id="cryptoPrice"></h4>
@@ -68,12 +69,12 @@
                             </div>
                         </div>
                     </div>
-                    <button class="grayBtn">
+                    <button class="grayBtn" id="favoriteBtn">
                         <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M1.08731 7.24264L7 14L12.9127 7.24264C13.6089 6.44699 14 5.36786 14 4.24264V4.05234C14 1.8143 12.4125 0 10.4542 0C9.37702 0 8.35829 0.55959 7.6854 1.52086L7 2.5L6.3146 1.52086C5.64171 0.55959 4.62296 0 3.5458 0C1.58751 0 0 1.8143 0 4.05234V4.24264C0 5.36786 0.391116 6.44699 1.08731 7.24264Z" />
                         </svg>
-                        Ajouter aux favoris
+                        <span id="favoriteText">Ajouter aux favoris</span>
                     </button>
                 </div>
                 <div class="bottom">
@@ -99,15 +100,15 @@
                         <div class="infos">
                             <div class="info">
                                 <p class="key">Premier bloc</p>
-                                <p class="value" id="cryptoGenesis">01-12-2012</p>
+                                <p class="value" id="cryptoGenesis"></p>
                             </div>
                             <div class="info">
                                 <p class="key">Capitalisation</p>
-                                <p class="value" id="cryptoCaptitalisation">$1,908,527,005,878</p>
+                                <p class="value" id="cryptoCaptitalisation"></p>
                             </div>
                             <div class="info">
                                 <p class="key">Circulation</p>
-                                <p class="value" id="cryptoCirculation">19.25M BTC</p>
+                                <p class="value" id="cryptoCirculation"></p>
                             </div>
                         </div>
                         <div class="links">

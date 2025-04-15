@@ -51,6 +51,7 @@
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -465,6 +466,7 @@ main {}
 .cryptochartcontainer .bottom {
     display: flex;
     justify-content: space-between;
+    gap: 5px;
 }
 
 .cryptochartcontainer .bottom .left {
@@ -478,12 +480,26 @@ main {}
     height: 50px;
 }
 
+.cryptochartcontainer .bottom .left .chart {
+    width: 100%;
+    height: auto;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.cryptochartcontainer .bottom .left .chart #chart {
+    width: 100% !important;
+    height: auto !important;
+    box-sizing: border-box;
+}
+
 .cryptochartcontainer .bottom .right {
     width: 280px;
     padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 20px;
 }
 
 .cryptochartcontainer .bottom .right .infos {
@@ -808,7 +824,7 @@ footer .content .bot p {
 ========>       MODAL BOX       <========
 ****************************************/
 .modalbox {
-    display: none;
+    display: flex;
     position: fixed;
     top: 0;
     left: 0;

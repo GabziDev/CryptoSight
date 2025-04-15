@@ -1,4 +1,4 @@
-import { formatCurrency, formatNumber } from './utils.js';
+import { formatCurrency, formatNumber, truncateText, handleEmptyText } from './utils.js';
 
 const baseUrl = `https://api.coingecko.com/api/v3/coins/`;
 let barData = [];
@@ -22,26 +22,46 @@ async function fetchData() {
         document.getElementById("cryptoGenesis").textContent = data.genesis_date;
         document.getElementById("cryptoCaptitalisation").textContent = formatCurrency(data.market_data.market_cap.usd);
         document.getElementById("cryptoCirculation").textContent = formatNumber(data.market_data.circulating_supply) + " " + data.symbol.toUpperCase();
+        document.getElementById("cryptoDesc").textContent =
+            data.description.fr || data.description.en || "Aucune description trouvée !";
 
-        /*
-        document.getElementById("1hPer").textContent = data.market_data.price_change_percentage_1h_in_currency.usd.toFixed(2) + "%";
-        const price1h = data.market_data.price_change_percentage_1h_in_currency.usd >= 0 ? "Up" : "Down";
-        document.getElementById("1hPerImage").src = `assets/svg/${price1h}.svg`;
-        document.getElementById("1hPerPrice").classList.add("price" + price1h);
+        // Links
+        function removeEmptyLinks() {
+            const links = document.querySelectorAll('.link');
+            links.forEach(link => {
+                const anchor = link.querySelector('a');
+                if (anchor.textContent == "Empty") {
+                    link.parentNode.removeChild(link);
+                }
+            });
+        }
 
-        document.getElementById("1hPer2").textContent = data.market_data.price_change_percentage_1h_in_currency.usd.toFixed(2) + "%";
-        document.getElementById("1hPerImage2").src = `assets/svg/${price1h}.svg`;
-        document.getElementById("1hPerPrice2").classList.add("price" + price1h);
+        // Links
+        const homepage = data.links.homepage[0] || "";
+        document.getElementById("cryptoWebsite").textContent = handleEmptyText(homepage);
+        document.getElementById("cryptoWebsite").href = homepage;
 
-        document.getElementById("24hPer").textContent = data.market_data.price_change_percentage_24h_in_currency.usd.toFixed(2) + "%";
-        const price24h = data.market_data.price_change_percentage_24h_in_currency.usd >= 0 ? "Up" : "Down";
-        document.getElementById("24hPerImage").src = `assets/svg/${price24h}.svg`;
-        document.getElementById("24hPerPrice").classList.add("price" + price24h);
+        const whitepaper = data.links.whitepaper || "";
+        document.getElementById("cryptoWhitePaper").textContent = handleEmptyText(whitepaper);
+        document.getElementById("cryptoWhitePaper").href = whitepaper;
 
-        document.getElementById("7dPer").textContent = data.market_data.price_change_percentage_7d_in_currency.usd.toFixed(2) + "%";
-        const price7j = data.market_data.price_change_percentage_7d_in_currency.usd >= 0 ? "Up" : "Down";
-        document.getElementById("7dPerImage").src = `assets/svg/${price7j}.svg`;
-        document.getElementById("7dPerPrice").classList.add("price" + price7j);*/
+        const facebookUsername = data.links.facebook_username || "";
+        document.getElementById("cryptoFacebook").textContent = handleEmptyText(facebookUsername);
+        document.getElementById("cryptoFacebook").href = `https://www.facebook.com/${facebookUsername}`;
+
+        const twitterUsername = data.links.twitter_screen_name || "";
+        document.getElementById("cryptoTwitter").textContent = handleEmptyText(twitterUsername);
+        document.getElementById("cryptoTwitter").href = `https://x.com/${twitterUsername}`;
+
+        const github = data.links.repos_url.github[0] || "";
+        document.getElementById("cryptoGithub").textContent = handleEmptyText(github);
+        document.getElementById("cryptoGithub").href = github;
+
+        const telegramChannel = data.links.telegram_channel_identifier || "";
+        document.getElementById("cryptoTelegram").textContent = handleEmptyText(telegramChannel);
+        document.getElementById("cryptoTelegram").href = `https://t.me/${telegramChannel}`;
+
+        removeEmptyLinks();
 
         document.getElementById("1hPer").textContent = data.market_data?.price_change_percentage_1h_in_currency?.usd != null ? data.market_data.price_change_percentage_1h_in_currency.usd.toFixed(2) + "%" : 'N/A';
         const price1h = data.market_data?.price_change_percentage_1h_in_currency?.usd >= 0 ? "Up" : "Down";

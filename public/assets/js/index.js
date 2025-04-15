@@ -7,7 +7,6 @@ const itemsPerPage = 12;
 let currentPage = 1;
 let data = [];
 let filteredData = [];
-const token = '3DWszswNtzdtmLP3Julzu3cIIKmbE3lDooygEF0n8OEq0HRqjZ7qq0W3JSdXPw3T';
 let favorites = [];
 let showingFavoritesOnly = false;
 
@@ -185,7 +184,7 @@ const toggleFavorite = async (symbol) => {
         method: method,
         headers: {
             "Content-Type": "application/json",
-            "Authorization": token
+            "Authorization": localStorage.getItem("token")
         },
         body: JSON.stringify({ cryptoId: symbol })
     });
@@ -205,7 +204,7 @@ const fetchFavorites = async () => {
     const response = await fetch("/api/user/favorites", {
         method: "GET",
         headers: {
-            "Authorization": token
+            "Authorization": localStorage.getItem("token")
         }
     });
 

@@ -3,6 +3,7 @@ import { formatCurrency, formatNumber, truncateText, handleEmptyText } from './u
 const baseUrl = `https://api.coingecko.com/api/v3/coins/`;
 let barData = [];
 let chartInstance = null;
+let isFavorite = false;
 let currentDays = 1;
 let chartType = 'line';
 
@@ -14,12 +15,21 @@ async function fetchData() {
     console.log(data);
 
     if (response.ok) {
+        checkIfFavorite(data.symbol);
+    
+        const favoriteButton = document.querySelector('#favoriteBtn');
+        favoriteButton.addEventListener('click', () => {
+            toggleFavorite(data.symbol);
+        });
+    
+        document.title = `${data.name} Crypto - CryptoSight`;
         document.getElementById("cryptoImage").src = data.image.small;
         document.getElementById("cryptoNom").textContent = data.name;
         document.getElementById("cryptoSymbol").textContent = data.symbol;
         document.getElementById("cryptoPosition").textContent = "#" + data.market_cap_rank;
-        document.getElementById("cryptoPrice").textContent = formatCurrency(data.market_data.current_price.usd);
-        document.getElementById("cryptoGenesis").textContent = data.genesis_date;
+        document.getElementById("cryptoPrice").textContent = "$" + data.market_data.current_price.usd;
+        const genesis_date = data.genesis_date || "Aucune date trouvée.";
+        document.getElementById("cryptoGenesis").textContent = genesis_date;
         document.getElementById("cryptoCaptitalisation").textContent = formatCurrency(data.market_data.market_cap.usd);
         document.getElementById("cryptoCirculation").textContent = formatNumber(data.market_data.circulating_supply) + " " + data.symbol.toUpperCase();
         document.getElementById("cryptoDesc").textContent =
@@ -208,6 +218,51 @@ function chartLigne() {
             }
         }
     });
+}
+
+async function checkIfFavorite(coinId) {
+    const response = await fetch("/api/user/favorites", {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            "Authorization": localStorage.getItem("token")
+        }
+    });
+    const result = await response.json();
+    let favorites = result.favorites || [];
+
+    isFavorite = favorites.includes(coinId) || false;
+    updateFavoriteButton();
+}
+
+async function toggleFavorite(coinId) {
+    const method = isFavorite ? 'DELETE' : 'POST';
+    const response = await fetch("/api/user/favorite", {
+        method: method,
+        headers: {
+            'Content-Type': 'application/json',
+            "Authorization": localStorage.getItem("token")
+        },
+        body: JSON.stringify({ cryptoId: coinId }),
+    });
+
+    if (response.ok) {
+        isFavorite = !isFavorite;
+        updateFavoriteButton();
+    }
+}
+
+
+function updateFavoriteButton() {
+    const favoriteButton = document.querySelector('#favoriteBtn');
+
+    if (isFavorite) {
+        document.querySelector(".grayBtn #favoriteText").textContent = 'Retirer des favoris';
+        favoriteButton.classList.add('activeHeart');
+    } else {
+        document.querySelector(".grayBtn #favoriteText").textContent = 'Ajouter aux favoris';
+        favoriteButton.classList.remove('activeHeart');
+    }
 }
 
 document.addEventListener("DOMContentLoaded", e => {

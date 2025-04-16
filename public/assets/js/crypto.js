@@ -1,3 +1,4 @@
+import { pushNotification } from './notifications.js';
 import { formatCurrency, formatNumber, truncateText, handleEmptyText } from './utils.js';
 
 const baseUrl = `https://api.coingecko.com/api/v3/coins/`;
@@ -6,6 +7,7 @@ let chartInstance = null;
 let isFavorite = false;
 let currentDays = 1;
 let chartType = 'line';
+let cryptoName;
 
 async function fetchData() {
     const fullUrl = `${baseUrl}${new URLSearchParams(window.location.search).get("coin")}`;
@@ -22,6 +24,7 @@ async function fetchData() {
             toggleFavorite(data.symbol);
         });
 
+        cryptoName = data.name;
         document.title = `${data.name} Crypto - CryptoSight`;
         document.getElementById("cryptoImage").src = data.image.small;
         document.getElementById("cryptoNom").textContent = data.name;
@@ -151,7 +154,7 @@ function chartBougie() {
                     mode: 'index',
                     intersect: false,
                     callbacks: {
-                        label: function(context) {
+                        label: function (context) {
                             const data = context.raw;
                             const o = data.o;
                             const h = data.h;
@@ -219,9 +222,9 @@ function chartLigne() {
                     mode: 'index',
                     intersect: false,
                     callbacks: {
-                        label: function(context) {
-                            const value = context.raw.y;  
-                            return `Prix : $${value}`; 
+                        label: function (context) {
+                            const value = context.raw.y;
+                            return `Prix : $${value}`;
                         }
                     },
                     displayColors: false
@@ -299,6 +302,11 @@ async function toggleFavorite(coinId) {
 
     if (response.ok) {
         isFavorite = !isFavorite;
+        if (isFavorite) {
+            pushNotification("success", `${cryptoName} ajouté aux favoris !`);
+        } else {
+            pushNotification("info", `${cryptoName} a été supprimé des favoris.`);
+        }
         updateFavoriteButton();
     } else {
         const registerModal = document.querySelector('[data-type="register"]');

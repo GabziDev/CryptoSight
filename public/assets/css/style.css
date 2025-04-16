@@ -966,3 +966,68 @@ footer .content .bot p {
     margin-top: 2vh;
     text-align: center;
 }
+
+/****************************************
+========>     NOTIFICATIONS     <========
+****************************************/
+.notificationcontainer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+    z-index: 9999;
+}
+
+.notification {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 250px;
+    max-width: 400px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.notification.alert {
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    border-left: 10px solid red;
+}
+
+.notification.warning {
+    border: 1px solid rgba(255, 123, 0, 0.2);
+    border-left: 10px solid rgb(255, 123, 0);
+}
+
+.notification.success {
+    border: 1px solid rgba(0, 219, 29, 0.2);
+    border-left: 10px solid rgb(0, 219, 29);
+}
+
+.notification.info {
+    border: 1px solid rgba(0, 140, 255, 0.2);
+    border-left: 10px solid rgb(0, 140, 255);
+}
+
+.notification.fade-out {
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

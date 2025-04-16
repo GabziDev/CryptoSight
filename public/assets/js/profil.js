@@ -1,3 +1,5 @@
+import { pushNotification } from './notifications.js';
+
 document.addEventListener("DOMContentLoaded", async (e) => {
     const response = await fetch("/api/user/info", {
         method: "GET",
@@ -37,9 +39,9 @@ document.getElementById("deleteAccount").addEventListener("click", async (e) => 
     const result = await response.json();
 
     if (response.ok) {
-        alert(result.message);
+        pushNotification("success", result.message);
         window.location.href = "/";
     } else {
-        alert(result.message);
+        pushNotification("alert", result.message || "Erreur");
     }
 });

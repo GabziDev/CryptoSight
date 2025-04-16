@@ -1,4 +1,5 @@
 import { formatCurrency, formatNumber } from './utils.js';
+import { pushNotification } from './notifications.js';
 
 const tbody = document.querySelector("table tbody");
 const paginationContainer = document.getElementById("pagination");

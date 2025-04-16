@@ -13,6 +13,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use("/", require("./routes/auth.routes"));
 app.use("/", require("./routes/favorites.routes"));
+app.use("/", require("./routes/user.routes"));
 
 app.listen(config.port, () => {
     console.log(`Server start :${config.port}`);

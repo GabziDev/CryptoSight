@@ -12,8 +12,8 @@ services:
       MARIADB_USER: ${MYSQL_USER}
       MARIADB_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
-      - ./database/CryptoSight.sql:/docker-entrypoint-initdb.d/init.sql
       - db_data:/var/lib/mysql
+      - ./database/CryptoSight.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "3306:3306"
 

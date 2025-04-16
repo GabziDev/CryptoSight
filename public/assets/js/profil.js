@@ -45,3 +45,13 @@ document.getElementById("deleteAccount").addEventListener("click", async (e) => 
         pushNotification("alert", result.message || "Erreur");
     }
 });
+
+document.getElementById("returnBack").addEventListener("click", e => {
+    e.preventDefault();
+    
+    if (document.referrer === "") {
+        window.location.href = "index.html";
+    } else {
+        window.history.back();
+    }
+});

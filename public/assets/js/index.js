@@ -85,7 +85,7 @@ const renderTable = () => {
         tr.innerHTML = `
             <td>
                 <button class="heartBtn" data-symbol="${coin.symbol}">
-                    <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="0 0 14 14" height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1.08731 7.24264L7 14L12.9127 7.24264C13.6089 6.44699 14 5.36786 14 4.24264V4.05234C14 1.8143 12.4125 0 10.4542 0C9.37702 0 8.35829 0.55959 7.6854 1.52086L7 2.5L6.3146 1.52086C5.64171 0.55959 4.62296 0 3.5458 0C1.58751 0 0 1.8143 0 4.05234V4.24264C0 5.36786 0.391116 6.44699 1.08731 7.24264Z" />
                     </svg>
                 </button>

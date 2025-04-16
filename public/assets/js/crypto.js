@@ -147,6 +147,30 @@ function chartBougie() {
         options: {
             plugins: {
                 legend: { display: false },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                    callbacks: {
+                        label: function(context) {
+                            const data = context.raw;
+                            const o = data.o;
+                            const h = data.h;
+                            const l = data.l;
+                            const c = data.c;
+                            return [
+                                `Ouverture : $${o}`,
+                                `Haut : $${h}`,
+                                `Bas : $${l}`,
+                                `Fermeture : $${c}`
+                            ];
+                        }
+                    },
+                    displayColors: false
+                }
+            },
+            hover: {
+                mode: 'index',
+                intersect: false
             },
             scales: {
                 x: {
@@ -160,7 +184,8 @@ function chartBougie() {
                     ticks: { color: '#9CA3AF' }
                 }
             }
-        }
+        },
+        plugins: [crosshairPlugin]
     });
 }
 
@@ -176,7 +201,6 @@ function chartLigne() {
         y: point.c
     }));
 
-
     chartInstance = new Chart(ctx, {
         type: 'line',
         data: {
@@ -190,35 +214,62 @@ function chartLigne() {
         },
         options: {
             plugins: {
-                legend: {
-                    display: false
-                },
+                legend: { display: false },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                    callbacks: {
+                        label: function(context) {
+                            const value = context.raw.y;  
+                            return `Prix : $${value}`; 
+                        }
+                    },
+                    displayColors: false
+                }
+            },
+            hover: {
+                mode: 'index',
+                intersect: false
             },
             scales: {
                 x: {
                     type: 'timeseries',
                     grid: {
-                        color: (context) => {
-                            return context.index === 0 ? '#9CA3AF20' : 'transparent';
-                        },
+                        color: (context) => context.index === 0 ? '#9CA3AF20' : 'transparent',
                     },
-                    ticks: {
-                        color: '#9CA3AF'
-                    }
+                    ticks: { color: '#9CA3AF' }
                 },
                 y: {
                     beginAtZero: false,
-                    grid: {
-                        color: '#9CA3AF20'
-                    },
-                    ticks: {
-                        color: '#9CA3AF'
-                    },
+                    grid: { color: '#9CA3AF20' },
+                    ticks: { color: '#9CA3AF' }
                 }
             }
-        }
+        },
+        plugins: [crosshairPlugin]
     });
 }
+
+const crosshairPlugin = {
+    id: 'verticalLine',
+    afterDraw: (chart) => {
+        if (chart.tooltip?._active?.length) {
+            const ctx = chart.ctx;
+            const x = chart.tooltip._active[0].element.x;
+            const topY = chart.scales.y.top;
+            const bottomY = chart.scales.y.bottom;
+
+            ctx.save();
+            ctx.beginPath();
+            ctx.moveTo(x, topY);
+            ctx.lineTo(x, bottomY);
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = '#88888850';
+            ctx.stroke();
+            ctx.restore();
+        }
+    }
+};
 
 async function checkIfFavorite(coinId) {
     const response = await fetch("/api/user/favorites", {

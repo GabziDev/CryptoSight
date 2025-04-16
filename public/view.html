@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto - CryptoSight</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/crypto.js" type="module"></script>
+    <script type="module" src="assets/js/modalbox.js"></script>
+    <script type="module" src="assets/js/navbar.js"></script>
+    <script src="assets/js/lib/luxon.js"></script>
+    <script src="assets/js/lib/chart.umd.js"></script>
+    <script src="assets/js/lib/chartjs-adapter-luxon.js"></script>
+    <script src="assets/js/lib/chartjs-chart-financial.js"></script>
+</head>
+
+<body>
+    <div id="modals"></div>
+    <nav>
+        <div class="content">
+            <div class="left">
+                <img src="assets/svg/Logo.svg" alt="Logo de CryptoSight">
+                <h2>CryptoSight</h2>
+            </div>
+            <div class="right">
+                <a href="/">&lt; Retourner en arrière</a>
+                <a id="myAccount" href="#">Mon compte</a>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="content">
+            <div class="cryptochartcontainer">
+                <div class="head">
+                    <div class="left">
+                        <div class="top">
+                            <img src="" id="cryptoImage">
+                            <h6 id="cryptoNom"></h6>
+                            <p id="cryptoSymbol"></p>
+                            <div class="tag" id="cryptoPosition"></div>
+                        </div>
+                        <div class="bot">
+                            <h4 id="cryptoPrice"></h4>
+                            <div class="" id="1hPerPrice">
+                                <img src="" id="1hPerImage">
+                                <span id="1hPer"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mid">
+                        <div class="item">
+                            <p>1h %</p>
+                            <div class="" id="1hPerPrice2">
+                                <img src="" id="1hPerImage2">
+                                <span id="1hPer2"></span>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <p>24h %</p>
+                            <div class="" id="24hPerPrice">
+                                <img src="" id="24hPerImage">
+                                <span id="24hPer"></span>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <p>7j %</p>
+                            <div class="" id="7dPerPrice">
+                                <img src="" id="7dPerImage">
+                                <span id="7dPer"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="grayBtn" id="favoriteBtn">
+                        <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M1.08731 7.24264L7 14L12.9127 7.24264C13.6089 6.44699 14 5.36786 14 4.24264V4.05234C14 1.8143 12.4125 0 10.4542 0C9.37702 0 8.35829 0.55959 7.6854 1.52086L7 2.5L6.3146 1.52086C5.64171 0.55959 4.62296 0 3.5458 0C1.58751 0 0 1.8143 0 4.05234V4.24264C0 5.36786 0.391116 6.44699 1.08731 7.24264Z" />
+                        </svg>
+                        <span id="favoriteText">Ajouter aux favoris</span>
+                    </button>
+                </div>
+                <div class="bottom">
+                    <div class="left">
+                        <div class="options">
+                            <div class="links">
+                                <button class="purpleBtn active">24h</button>
+                                <button class="purpleBtn">7j</button>
+                                <button class="purpleBtn">1m</button>
+                                <button class="purpleBtn">3m</button>
+                                <button class="purpleBtn">1an</button>
+                            </div>
+                            <div class="links">
+                                <button class="purpleBtn active" data-typechart="line">Vue en ligne</button>
+                                <button class="purpleBtn" data-typechart="candle">Vue en bougie</button>
+                            </div>
+                        </div>
+                        <div class="chart">
+                            <canvas id="chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="infos">
+                            <div class="info">
+                                <p class="key">Premier bloc</p>
+                                <p class="value" id="cryptoGenesis"></p>
+                            </div>
+                            <div class="info">
+                                <p class="key">Capitalisation</p>
+                                <p class="value" id="cryptoCaptitalisation"></p>
+                            </div>
+                            <div class="info">
+                                <p class="key">Circulation</p>
+                                <p class="value" id="cryptoCirculation"></p>
+                            </div>
+                        </div>
+                        <div class="links">
+                            <h5>Liens</h5>
+                            <div class="link">
+                                <p class="key">Site web</p><a class="value" id="cryptoWebsite" href=""></a>
+                            </div>
+                            <div class="link">
+                                <p class="key">Papier Blanc</p><a class="value" id="cryptoWhitePaper" href=""></a>
+                            </div>
+                            <div class="link">
+                                <p class="key">X</p><a class="value" id="cryptoTwitter" href=""></a>
+                            </div>
+                            <div class="link">
+                                <p class="key">Facebook</p><a class="value" id="cryptoFacebook" href=""></a>
+                            </div>
+                            <div class="link">
+                                <p class="key">Telegram</p><a class="value" id="cryptoTelegram" href=""></a>
+                            </div>
+                            <div class="link">
+                                <p class="key">Github</p><a class="value" id="cryptoGithub" href=""></a>
+                            </div>
+                        </div>
+                        <div class="about">
+                            <h5>À Propos</h5>
+                            <p id="cryptoDesc"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="content">
+            <div class="top">
+                <div class="left">
+                    <h4>À Propos</h4>
+                    <p>Crypto Sight est une plateforme dédiée à la consultation et à la visualisation de cryptomonnaies.
+                        Elle permet de lister les principales cryptos du marché, d'afficher leurs prix, leurs volumes,
+                        leurs variations et d'autres données pertinentes en temps réel. L'objectif est de fournir un
+                        outil simple, clair et efficace pour suivre l'évolution du marché crypto.
+
+                        Le site propose également des graphiques interactifs pour mieux comprendre les tendances et
+                        analyser les performances des différentes cryptomonnaies. Crypto Sight s'adresse aussi bien aux
+                        curieux qu'aux passionnés, en offrant une interface épurée et accessible, alimentée par des
+                        données fiables fournies par CoinGecko.</p>
+                </div>
+                <div class="right">
+                    <a href="https://www.coingecko.com/en/api" class="coinGeckoBtn">
+                    </a>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="bot">
+                <p>© 2025 CryptoSight. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

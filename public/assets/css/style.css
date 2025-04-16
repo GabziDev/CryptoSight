@@ -1,0 +1,968 @@
+:root {
+    --background-color: #1F2937;
+    --purple-color: #8B5CF6;
+    --green-color: #10B981;
+    --red-color: #EF4444;
+    --gray-color: #9CA3AF;
+    --white-color: #F9FAFB;
+    --transition-hover: 200ms ease all;
+}
+
+@font-face {
+    font-family: Montserrat-Bold;
+    src: url(../fonts/Montserrat-Bold.ttf);
+}
+
+@font-face {
+    font-family: Montserrat-SemiBold;
+    src: url(../fonts/Montserrat-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: Montserrat-Regular;
+    src: url(../fonts/Montserrat-Regular.ttf);
+}
+
+@font-face {
+    font-family: Montserrat-Light;
+    src: url(../fonts/Montserrat-Light.ttf);
+}
+
+@font-face {
+    font-family: Roboto-Bold;
+    src: url(../fonts/Roboto-Bold.ttf);
+}
+
+@font-face {
+    font-family: Roboto-Light;
+    src: url(../fonts/Roboto-Light.ttf);
+}
+
+@font-face {
+    font-family: Roboto-Medium;
+    src: url(../fonts/Roboto-Medium.ttf);
+}
+
+@font-face {
+    font-family: Roboto-Regular;
+    src: url(../fonts/Roboto-Regular.ttf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--white-color);
+    font-family: Montserrat-Regular;
+}
+
+a,
+button {
+    font-size: 15px;
+    color: var(--gray-color)
+}
+
+p,
+label {
+    font-size: 16px;
+}
+
+h6 {
+    font-size: 19.2px;
+}
+
+h5 {
+    font-size: 23.04px;
+}
+
+h4 {
+    font-size: 27.65px;
+}
+
+h3 {
+    font-size: 33.18px;
+}
+
+h2 {
+    font-size: 39.81px;
+}
+
+h1 {
+    font-size: 47.78px;
+}
+
+.priceUp {
+    color: var(--green-color)
+}
+
+.priceDown {
+    color: var(--red-color)
+}
+
+.content {
+    max-width: 1200px;
+    height: 100%;
+    margin: auto;
+    padding: 0 10px;
+}
+
+/****************************************
+========>        BUTTONS        <========
+****************************************/
+.coinGeckoBtn {
+    width: 180px;
+    height: 55px;
+    opacity: .8;
+    background-image: url(../img/CoingeckoLinkBtn.png);
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.5);
+    transition: var(--transition-hover);
+}
+
+.coinGeckoBtn:hover {
+    opacity: 1;
+}
+
+.purpleNeonBtn {
+    font-family: Montserrat-Regular;
+    cursor: pointer;
+    padding: 0.7em 2.5em;
+    border-radius: 0.5em;
+    height: 50px;
+    min-width: 3em;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+    background-color: var(--purple-color);
+    color: var(--white-color);
+    border: 0;
+    box-shadow: inset 1px 10px 10px #ffffff40;
+    transition: var(--transition-hover);
+}
+
+.purpleNeonBtn:hover {
+    opacity: .8;
+}
+
+.purpleBtn {
+    font-family: Montserrat-Regular;
+    height: 30px;
+    padding: 0 10px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    color: var(--gray-color);
+    transition: var(--transition-hover);
+}
+
+.purpleBtn:hover,
+.purpleBtn.active {
+    background-color: #8B5CF650;
+    color: var(--purple-color)
+}
+
+.grayBtn {
+    font-family: Montserrat-Regular;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    height: 30px;
+    padding: 0 10px;
+    cursor: pointer;
+    background-color: #9CA3AF30;
+    border: none;
+    border-radius: 5px;
+    color: #9CA3AF70;
+    transition: var(--transition-hover);
+}
+
+.grayBtn svg {
+    width: 15px;
+    height: 15px;
+    fill: #9CA3AF70;
+    transition: var(--transition-hover);
+}
+
+.grayBtn:hover {
+    background-color: #9CA3AF50;
+    color: var(--gray-color);
+}
+
+.grayBtn:hover svg {
+    fill: var(--gray-color);
+}
+
+.grayBtn.active {
+    background-color: #9CA3AF50;
+    color: var(--gray-color);
+}
+
+.grayBtn.active svg {
+    fill: var(--gray-color);
+}
+
+.grayBtn.activeHeart {
+    background-color: #EF444450;
+    color: #EF444470;
+}
+
+.grayBtn.activeHeart svg {
+    fill: #EF444470;
+}
+
+.heartBtn {
+    height: 20px;
+    width: 20px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.heartBtn svg {
+    fill: #9CA3AF30;
+    transition: var(--transition-hover);
+}
+
+.heartBtn:hover svg {
+    fill: #EF444450;
+}
+
+.heartBtn.active svg {
+    fill: #EF444470;
+}
+
+.closeBtn {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: var(--transition-hover);
+}
+
+.closeBtn img {
+    height: 30px;
+    width: 30px;
+}
+
+.closeBtn:hover {
+    background-color: #9CA3AF30;
+}
+
+/****************************************
+========>        SEARCH         <========
+****************************************/
+.search {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 190px;
+    height: 34px;
+}
+
+.search .input {
+    width: 100%;
+    height: 100%;
+    padding-left: 2.5rem;
+    padding-right: .5rem;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid var(--gray-color);
+    color: white;
+    z-index: 0;
+    transition: var(--transition-hover);
+}
+
+.search .input:focus {
+    border-color: var(--purple-color)
+}
+
+.search .searchicon {
+    position: absolute;
+    left: .5rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    pointer-events: none;
+    stroke: var(--gray-color);
+    z-index: 1;
+}
+
+/****************************************
+========>         NAVBAR        <========
+****************************************/
+nav {
+    height: 100px;
+}
+
+nav .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .content .left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+nav .content .left img {
+    height: 84px;
+    width: 84px;
+}
+
+nav .content .left h2 {
+    font-family: Montserrat-SemiBold;
+}
+
+nav .content .right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+nav .content .right a {
+    text-decoration: none;
+    transition: var(--transition-hover);
+}
+
+nav .content .right a:hover {
+    color: var(--white-color);
+}
+
+/****************************************
+========>          MAIN         <========
+****************************************/
+main {}
+
+/************************
+====>     PROFIL    <====
+************************/
+.profilcontainer {
+    width: 100%;
+    margin: 150px 0 150px;
+}
+
+.profilcontainer h3 #username {
+    color: var(--purple-color);
+}
+
+.profilcontainer .box {
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.profilcontainer .box div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profilcontainer .box div .left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 80%;
+}
+
+.profilcontainer .box div .right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profilcontainer .box .line {
+    background-color: #9CA3AF20;
+    width: 100%;
+    height: 1px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.profilcontainer .box div .left span,
+.profilcontainer .box div .left p {
+    color: var(--gray-color);
+}
+
+/************************
+====>  CRYPTO LIST  <====
+************************/
+.cryptocontainer {
+    width: 100%;
+    margin: 150px 0 150px;
+}
+
+.cryptocontainer .head {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cryptocontainer .head .links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.cryptocontainer .footer {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cryptocontainer .footer p {
+    color: var(--gray-color)
+}
+
+.cryptocontainer .footer #pagination {
+    display: flex;
+    gap: 2px;
+}
+
+/************************
+====>  CRYPTO VIEW  <====
+************************/
+.cryptochartcontainer {
+    width: 100%;
+    margin: 150px 0 150px;
+}
+
+.cryptochartcontainer .head {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    align-items: center;
+}
+
+.cryptochartcontainer .head .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 70%;
+}
+
+.cryptochartcontainer .head .left .top {
+    display: flex;
+    align-items: center;
+    gap: 1vh;
+}
+
+.cryptochartcontainer .head .left .top img {
+    height: 20px;
+}
+
+.cryptochartcontainer .head .left .top h6 {
+    font-family: Roboto-Regular;
+}
+
+.cryptochartcontainer .head .left .top p {
+    font-family: Roboto-Light;
+}
+
+.cryptochartcontainer .head .left .top #cryptoSymbol {
+    color: var(--gray-color)
+}
+
+.cryptochartcontainer .head .left .top #cryptoPosition {
+    background-color: #9CA3AF20;
+    padding: 3px;
+    border-radius: 5px;
+    font-size: 10px;
+    font-family: Roboto-Regular;
+}
+
+.cryptochartcontainer .head .left .bot {
+    display: flex;
+    align-items: center;
+    gap: 2vh;
+}
+
+.cryptochartcontainer .head .left .bot h4 {
+    font-family: Roboto-Medium;
+}
+
+.cryptochartcontainer .head .mid {
+    height: 70%;
+    display: flex;
+    justify-content: space-between;
+    gap: 4vh;
+}
+
+.cryptochartcontainer .head .mid .item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.cryptochartcontainer .head .mid .item p {
+    font-family: Montserrat-Light;
+    color: var(--gray-color);
+}
+
+.cryptochartcontainer .bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.cryptochartcontainer .bottom .left {
+    flex: 1;
+}
+
+.cryptochartcontainer .bottom .left .options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+}
+
+.cryptochartcontainer .bottom .left .chart {
+    width: 100%;
+    height: auto;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.cryptochartcontainer .bottom .left .chart #chart {
+    width: 100% !important;
+    height: auto !important;
+    box-sizing: border-box;
+}
+
+.cryptochartcontainer .bottom .right {
+    width: 280px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.cryptochartcontainer .bottom .right .infos {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+.cryptochartcontainer .bottom .right .infos .info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cryptochartcontainer .bottom .right .links {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+.cryptochartcontainer .bottom .right .links .link {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cryptochartcontainer .bottom .right .infos h5,
+.cryptochartcontainer .bottom .right .links h5,
+.cryptochartcontainer .bottom .right .about h5 {
+    font-family: Montserrat-Regular;
+}
+
+.cryptochartcontainer .bottom .right .infos .info .key,
+.cryptochartcontainer .bottom .right .links .link .key {
+    font-family: Montserrat-Regular;
+    color: var(--gray-color)
+}
+
+.cryptochartcontainer .bottom .right .infos .info .value,
+.cryptochartcontainer .bottom .right .links .link .value {
+    color: var(--white-color);
+    font-family: Roboto-Light;
+    font-weight: 100;
+}
+
+.cryptochartcontainer .bottom .right .links .link a {
+    background-color: #9CA3AF30;
+    padding: 0 10px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: var(--transition-hover);
+}
+
+.cryptochartcontainer .bottom .right .links .link a:hover {
+    background-color: #9CA3AF70;
+}
+
+.cryptochartcontainer .bottom .right .about p {
+    color: var(--gray-color);
+    font-family: Roboto-Light;
+    font-weight: 100;
+    font-size: 13px;
+}
+
+/******************
+====>  Table  <====
+******************/
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.cryptocontainer table thead tr {
+    height: 40px;
+    color: var(--gray-color);
+    font-family: Montserrat-Light;
+    font-weight: 100;
+    font-size: 12px;
+}
+
+.cryptocontainer table tbody tr {
+    height: 60px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cryptocontainer table tbody tr:hover td {
+    background-color: #9CA3AF10;
+}
+
+.cryptocontainer table tbody tr td:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.cryptocontainer table tbody tr td:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/*Heart*/
+.cryptocontainer table tbody tr td:nth-child(1) .heartBtn {
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+/*Index*/
+.cryptocontainer table tbody tr td:nth-child(2) {
+    font-family: Roboto-Light;
+    font-size: 14px;
+}
+
+/*Nom*/
+.cryptocontainer table tbody tr td:nth-child(3) .name {
+    display: flex;
+    align-items: center;
+    font-family: Roboto-Light;
+    font-size: 14px;
+}
+
+.cryptocontainer table tbody tr td:nth-child(3) .name img {
+    height: 20px;
+    width: 20px;
+    margin-right: 2px;
+}
+
+.cryptocontainer table tbody tr td:nth-child(3) .name .name {
+    font-family: Roboto-Medium;
+}
+
+.cryptocontainer table tbody tr td:nth-child(3) .name .symbole {
+    color: var(--gray-color);
+    font-family: Roboto-Light;
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+/*Prix*/
+.cryptocontainer table tbody tr td:nth-child(4) {
+    font-family: Roboto-Light;
+    font-size: 14px;
+}
+
+/*24h%*/
+.cryptocontainer table tbody tr td:nth-child(5) {
+    font-family: Roboto-Light;
+    font-size: 14px;
+    gap: 10px;
+}
+
+.cryptocontainer table tbody tr td:nth-child(5) img {
+    margin-right: 3px;
+}
+
+/*Capitalisation Circulation*/
+.cryptocontainer table tbody tr td:nth-child(6),
+.cryptocontainer table tbody tr td:nth-child(7) {
+    font-family: Roboto-Light;
+    font-size: 14px;
+}
+
+tr {
+    border-radius: 10px;
+}
+
+.cryptocontainer table th,
+.cryptocontainer table td {
+    text-align: center;
+}
+
+.cryptocontainer table th:nth-child(3),
+.cryptocontainer table td:nth-child(3),
+.cryptocontainer table th:nth-child(4),
+.cryptocontainer table td:nth-child(4),
+.cryptocontainer table tr th:nth-child(6),
+.cryptocontainer table tr td:nth-child(6),
+.cryptocontainer table tr th:nth-child(7),
+.cryptocontainer table tr td:nth-child(7) {
+    text-align: left;
+}
+
+.cryptocontainer table colgroup col:nth-child(1) {
+    width: 3%;
+}
+
+.cryptocontainer table colgroup col:nth-child(2) {
+    width: 5%;
+}
+
+.cryptocontainer table colgroup col:nth-child(3) {
+    width: 15%;
+}
+
+.cryptocontainer table colgroup col:nth-child(4) {
+    width: 10%;
+}
+
+.cryptocontainer table colgroup col:nth-child(5) {
+    width: 30%;
+}
+
+.cryptocontainer table colgroup col:nth-child(6) {
+    width: 14%;
+}
+
+.cryptocontainer table colgroup col:nth-child(7) {
+    width: 13%;
+}
+
+@media screen and (max-width: 850px) {
+
+    .cryptocontainer table th:nth-child(6),
+    .cryptocontainer table td:nth-child(6),
+    .cryptocontainer table th:nth-child(7),
+    .cryptocontainer table td:nth-child(7) {
+        display: none;
+    }
+
+    .cryptocontainer table colgroup col:nth-child(1) {
+        width: 5%;
+    }
+
+    .cryptocontainer table colgroup col:nth-child(2) {
+        width: 10%;
+    }
+
+    .cryptocontainer table colgroup col:nth-child(3) {
+        width: 35%;
+    }
+
+    .cryptocontainer table colgroup col:nth-child(4) {
+        width: 20%;
+    }
+
+    .cryptocontainer table colgroup col:nth-child(5) {
+        width: 30%;
+    }
+}
+
+/****************************************
+========>         FOOTER        <========
+****************************************/
+footer {
+    min-height: 350px;
+}
+
+footer .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+footer .content .top {
+    display: flex;
+    justify-content: space-between;
+}
+
+footer .content .top .left {
+    max-width: 500px;
+}
+
+footer .content .top .left h4 {
+    font-family: Montserrat-Bold;
+}
+
+footer .content .top .left p {
+    font-family: Montserrat-Light;
+}
+
+footer .content .top .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+footer .content .line {
+    width: 100%;
+    background-color: var(--gray-color);
+    height: 1px;
+    opacity: 0.5;
+    margin: 2vh 0;
+}
+
+footer .content .bot {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer .content .bot p {
+    font-family: Montserrat-Light;
+    color: var(--gray-color);
+}
+
+@media screen and (max-width: 835px) {
+    footer .content .top {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2vh;
+    }
+
+    footer .content .top .left {
+        margin: auto;
+    }
+
+    footer .content .top .right {
+        margin: auto;
+    }
+
+    footer .content .bot p {
+        text-align: center;
+    }
+}
+
+/****************************************
+========>       MODAL BOX       <========
+****************************************/
+.modalbox {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+}
+
+.modalbox .box {
+    margin: auto;
+    background-color: var(--background-color);
+    border: 1px solid #9CA3AF50;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+.modalbox .box .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modalbox .box .head h2 {
+    font-family: Montserrat-SemiBold;
+}
+
+.modalbox .box .head .closeBtn {
+    margin: 0;
+    position: relative;
+    bottom: 10px;
+}
+
+.modalbox .box p {
+    color: var(--gray-color);
+}
+
+.modalbox .box .groups {
+    gap: 2vh;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+.modalbox .box .groups .group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modalbox .box .groups .group input {
+    outline: none;
+    background: transparent;
+    color: var(--white-color);
+    border: 1px solid var(--gray-color);
+    font-size: 14px;
+    height: 40px;
+    padding: 0 1vh;
+    border-radius: 5px;
+    transition: var(--transition-hover);
+}
+
+.modalbox .box .groups .group input:focus {
+    border: 1px solid var(--purple-color);
+    color: var(--white-color);
+}
+
+.modalbox .box button {
+    margin: auto;
+}
+
+.modalbox .box a {
+    margin-top: 2vh;
+    text-align: center;
+}

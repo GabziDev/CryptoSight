@@ -26,7 +26,7 @@ module.exports.login = async (req, res) => {
 
         await pool.execute("UPDATE users SET token = ? WHERE id = ?", [token, userDB.id]);
 
-        return res.status(200).json({ success: 'Connexion avec succès !', token: token });
+        return res.status(200).json({ message: 'Connexion avec succès !', token: token });
     } catch (error) {
         console.error(error);
         return res.status(500).json({ message: "Une erreur interne est survenue." });
@@ -68,7 +68,7 @@ module.exports.register = async (req, res) => {
             [userId, username, email, hashedPassword]
         );
 
-        return res.status(200).json({ success: 'Utilisateur enregistré avec succès !' });
+        return res.status(200).json({ message: 'Utilisateur enregistré avec succès !' });
     } catch (error) {
         console.error(error);
         return res.status(500).json({ message: "Une erreur interne est survenue." });

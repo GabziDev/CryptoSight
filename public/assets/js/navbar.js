@@ -18,9 +18,6 @@ document.getElementById("myAccount").addEventListener("click", async (e) => {
             registerModal.style.display = "flex";
         }
     } else {
-        let path = window.location.pathname;
-        localStorage.setItem("previousPageForProfil", path);
-
         window.location.href = "/profil.html";
     }
 });

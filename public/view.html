@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Crypto - CryptoSight</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/js/crypto.js" type="module"></script>
+    <script type="module" src="assets/js/crypto.js"></script>
     <script type="module" src="assets/js/modalbox.js"></script>
     <script type="module" src="assets/js/navbar.js"></script>
     <script src="assets/js/lib/luxon.js"></script>
@@ -16,6 +16,7 @@
 </head>
 
 <body>
+    <div class="notificationcontainer" id="notificationcontainer"></div>
     <div id="modals"></div>
     <nav>
         <div class="content">
@@ -100,6 +101,7 @@
                     </div>
                     <div class="right">
                         <div class="infos">
+                            <h5>Informations</h5>
                             <div class="info">
                                 <p class="key">Premier bloc</p>
                                 <p class="value" id="cryptoGenesis"></p>

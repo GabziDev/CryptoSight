@@ -5,7 +5,7 @@
     --red-color: #EF4444;
     --gray-color: #9CA3AF;
     --white-color: #F9FAFB;
-    --transition-hover: 200ms ease all;
+    --transition-hover: 100ms ease all;
 }
 
 @font-face {
@@ -166,6 +166,27 @@ h1 {
 .purpleBtn.active {
     background-color: #8B5CF650;
     color: var(--purple-color)
+}
+
+.redBtn {
+    font-family: Montserrat-Regular;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    height: 30px;
+    padding: 0 10px;
+    cursor: pointer;
+    background-color: #EF444430;
+    border: none;
+    border-radius: 5px;
+    color: #EF444470;
+    transition: var(--transition-hover);
+}
+
+.redBtn:hover {
+    background-color: #EF444450;
+    color: var(--red-color);
 }
 
 .grayBtn {
@@ -348,6 +369,30 @@ nav .content .right a:hover {
     color: var(--white-color);
 }
 
+@media screen and (max-width: 700px) {
+    nav .content .left img {
+        height: 60px;
+        width: 60px;
+    }
+    
+    nav .content .left h2 {
+        font-family: Montserrat-SemiBold;
+        font-size: 33.18px;
+    }    
+}
+
+@media screen and (max-width: 500px) {
+    nav .content .left img {
+        height: 50px;
+        width: 50px;
+    }
+    
+    nav .content .left h2 {
+        font-family: Montserrat-SemiBold;
+        font-size: 27.65px;
+    }    
+}
+
 /****************************************
 ========>          MAIN         <========
 ****************************************/
@@ -447,6 +492,8 @@ main {}
 .cryptochartcontainer {
     width: 100%;
     margin: 150px 0 150px;
+
+    background-color: rgba(255, 0, 0, 0);
 }
 
 .cryptochartcontainer .head {
@@ -454,6 +501,8 @@ main {}
     justify-content: space-between;
     height: 80px;
     align-items: center;
+
+    background-color: rgba(0, 60, 255, 0);
 }
 
 .cryptochartcontainer .head .left {
@@ -461,24 +510,34 @@ main {}
     flex-direction: column;
     justify-content: space-between;
     height: 70%;
+
+    background-color: rgba(81, 255, 0, 0);
 }
 
 .cryptochartcontainer .head .left .top {
     display: flex;
     align-items: center;
     gap: 1vh;
+
+    background-color: rgba(81, 255, 0, 0);
 }
 
 .cryptochartcontainer .head .left .top img {
     height: 20px;
+
+    background-color: rgba(81, 255, 0, 0);
 }
 
 .cryptochartcontainer .head .left .top h6 {
     font-family: Roboto-Regular;
+
+    background-color: rgba(81, 255, 0, 0);
 }
 
 .cryptochartcontainer .head .left .top p {
     font-family: Roboto-Light;
+
+    background-color: rgba(81, 255, 0, 0);
 }
 
 .cryptochartcontainer .head .left .top #cryptoSymbol {
@@ -497,10 +556,14 @@ main {}
     display: flex;
     align-items: center;
     gap: 2vh;
+
+    background-color: rgba(0, 255, 221, 0);
 }
 
 .cryptochartcontainer .head .left .bot h4 {
     font-family: Roboto-Medium;
+
+    background-color: rgba(81, 255, 0, 0);
 }
 
 .cryptochartcontainer .head .mid {
@@ -508,6 +571,8 @@ main {}
     display: flex;
     justify-content: space-between;
     gap: 4vh;
+
+    background-color: rgba(81, 255, 0, 0);
 }
 
 .cryptochartcontainer .head .mid .item {
@@ -515,6 +580,9 @@ main {}
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
+    max-width: 100px;
+
+    background-color: rgba(81, 255, 0, 0);
 }
 
 .cryptochartcontainer .head .mid .item p {
@@ -526,10 +594,14 @@ main {}
     display: flex;
     justify-content: space-between;
     gap: 5px;
+
+    background-color: rgba(204, 0, 255, 0);
 }
 
 .cryptochartcontainer .bottom .left {
     flex: 1;
+
+    background-color: rgba(81, 255, 0, 0);
 }
 
 .cryptochartcontainer .bottom .left .options {
@@ -537,6 +609,8 @@ main {}
     align-items: center;
     justify-content: space-between;
     height: 50px;
+
+    background-color: rgba(119, 0, 255, 0);
 }
 
 .cryptochartcontainer .bottom .left .chart {
@@ -544,6 +618,8 @@ main {}
     height: auto;
     position: relative;
     box-sizing: border-box;
+
+    background-color: rgba(0, 255, 85, 0);
 }
 
 .cryptochartcontainer .bottom .left .chart #chart {
@@ -559,12 +635,20 @@ main {}
     flex-direction: column;
     justify-content: space-between;
     gap: 20px;
+
+    background-color: rgba(81, 255, 0, 0);
 }
 
 .cryptochartcontainer .bottom .right .infos {
     display: flex;
     flex-direction: column;
     gap: 1vh;
+
+    background-color: rgba(81, 255, 0, 0);
+}
+
+.cryptochartcontainer .bottom .right .infos h5 {
+    display: none;
 }
 
 .cryptochartcontainer .bottom .right .infos .info {
@@ -576,6 +660,8 @@ main {}
     display: flex;
     flex-direction: column;
     gap: 1vh;
+
+    background-color: rgba(81, 255, 0, 0);
 }
 
 .cryptochartcontainer .bottom .right .links .link {
@@ -618,11 +704,118 @@ main {}
     background-color: #9CA3AF70;
 }
 
+.cryptochartcontainer .bottom .right .about {
+    background-color: rgba(81, 255, 0, 0);
+}
+
 .cryptochartcontainer .bottom .right .about p {
     color: var(--gray-color);
     font-family: Roboto-Light;
     font-weight: 100;
     font-size: 13px;
+}
+
+@media screen and (max-width: 1200px) {
+    .cryptochartcontainer .bottom {
+        flex-direction: column;
+    }
+
+    .cryptochartcontainer .bottom .right {
+        margin-top: 2vh;
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0;
+    }
+
+    .cryptochartcontainer .bottom .right .infos {
+        width: 25%;
+    }
+
+    .cryptochartcontainer .bottom .right .links {
+        width: 25%;
+    }
+
+    .cryptochartcontainer .bottom .right .about {
+        width: 50%;
+    }
+
+    .cryptochartcontainer .bottom .right .infos h5 {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    .cryptochartcontainer .bottom .right {
+        flex-direction: column;
+        gap: 20px;
+        padding: 0;
+    }
+
+    .cryptochartcontainer .bottom .right .infos,
+    .cryptochartcontainer .bottom .right .links {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .cryptochartcontainer .bottom .right .infos .info,
+    .cryptochartcontainer .bottom .right .links .link {
+        flex: 1;
+        justify-content: space-between;
+    }
+
+    .cryptochartcontainer .bottom .right .about {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .cryptochartcontainer .head {
+        flex-wrap: wrap;
+        height: auto;
+        row-gap: 1vh;
+    }
+
+    .cryptochartcontainer .head .left {
+        flex: 1 1 40%;
+    }
+
+    .cryptochartcontainer .head .mid {
+        flex: 1 1 60%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .cryptochartcontainer .head .mid .item {
+        min-width: 100px;
+    }
+
+    .cryptochartcontainer .head .grayBtn {
+        width: 100%;
+        order: 1;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .cryptochartcontainer .bottom .left .options {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 65px;
+        margin-top: 2vh;
+        margin-bottom: 5px;
+        align-items: flex-start;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .cryptochartcontainer .head .mid .item:first-child {
+        display: none;
+    }
 }
 
 /******************
@@ -646,6 +839,10 @@ table {
     height: 60px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+}
+
+.cryptocontainer table tbody tr td {
+    padding: 5px
 }
 
 .cryptocontainer table tbody tr:hover td {
@@ -773,7 +970,6 @@ tr {
 }
 
 @media screen and (max-width: 850px) {
-
     .cryptocontainer table th:nth-child(6),
     .cryptocontainer table td:nth-child(6),
     .cryptocontainer table th:nth-child(7),
@@ -799,6 +995,11 @@ tr {
 
     .cryptocontainer table colgroup col:nth-child(5) {
         width: 30%;
+    }
+
+    .cryptocontainer table tbody tr td:nth-child(5) {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
     }
 }
 
@@ -892,6 +1093,7 @@ footer .content .bot p {
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px);
     z-index: 1000;
+    overflow-y: scroll;
 }
 
 .modalbox .box {
@@ -965,4 +1167,97 @@ footer .content .bot p {
 .modalbox .box a {
     margin-top: 2vh;
     text-align: center;
+}
+
+@media screen and (max-width: 550px) {
+    .modalbox {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--background-color);
+        backdrop-filter: blur(5px);
+        z-index: 1000;
+        overflow: hidden;
+    }
+    
+    .modalbox .box {
+        margin: none;
+        margin-top: 0;
+        border: none;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 100%;
+        width: 100%;
+        box-shadow: none;
+        display: flex;
+        flex-direction: column;
+    }
+    
+}
+
+/****************************************
+========>     NOTIFICATIONS     <========
+****************************************/
+.notificationcontainer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+    z-index: 9999;
+}
+
+.notification {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 300px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background-color: var(--background-color);
+    animation: fadeIn 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.notification.alert {
+    border: 1px solid rgba(255, 0, 0, 0.4);
+    border-left: 10px solid red;
+}
+
+.notification.warning {
+    border: 1px solid rgba(255, 123, 0, 0.4);
+    border-left: 10px solid rgb(255, 123, 0);
+}
+
+.notification.success {
+    border: 1px solid rgba(0, 219, 29, 0.4);
+    border-left: 10px solid rgb(0, 219, 29);
+}
+
+.notification.info {
+    border: 1px solid rgba(0, 140, 255, 0.4);
+    border-left: 10px solid rgb(0, 140, 255);
+}
+
+.notification.fade-out {
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }

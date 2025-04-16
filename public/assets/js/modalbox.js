@@ -1,3 +1,5 @@
+import { pushNotification } from './notifications.js';
+
 (async function () {
     const [login, register] = await Promise.all([
         fetch("/components/login.html").then(res => res.text()),
@@ -53,7 +55,7 @@ async function registerModalBoxEvent() {
             const password = document.querySelector('[data-type="register"] .box .groups .group #password').value;
 
             if (!username || !email || !password) {
-                alert("Tous les champs doivent être remplis.");
+                pushNotification("warning", "Veuillez remplir tout les champs !");
                 return;
             }
 
@@ -76,8 +78,9 @@ async function registerModalBoxEvent() {
             if (response.ok) {
                 registerModal.style.display = 'none';
                 loginModal.style.display = 'flex';
+                pushNotification("success", result.message);
             } else {
-                alert(result.message || "Erreur");
+                pushNotification("alert", result.message || "Erreur");
             }
         });
     }
@@ -113,7 +116,7 @@ async function loginModalBoxEvent() {
             const password = document.querySelector('[data-type="login"] .box .groups .group #password').value;
 
             if (!email || !password) {
-                alert("Veuillez remplir tous les champs.");
+                pushNotification("warning", "Veuillez remplir tous les champs.");
                 return;
             }
 
@@ -133,11 +136,11 @@ async function loginModalBoxEvent() {
             const result = await response.json();
 
             if (response.ok) {
-                alert("Connexion réussie !");
+                pushNotification("success", "Connexion réussie !");
                 localStorage.setItem("token", result.token);
                 window.location.reload();
             } else {
-                alert(result.message || "Erreur");
+                pushNotification("alert", result.message || "Erreur");
             }
         });
     }

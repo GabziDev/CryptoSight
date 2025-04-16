@@ -354,6 +354,56 @@ nav .content .right a:hover {
 main {}
 
 /************************
+====>     PROFIL    <====
+************************/
+.profilcontainer {
+    width: 100%;
+    margin: 150px 0 150px;
+}
+
+.profilcontainer h3 #username {
+    color: var(--purple-color);
+}
+
+.profilcontainer .box {
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.profilcontainer .box div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profilcontainer .box div .left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 80%;
+}
+
+.profilcontainer .box div .right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profilcontainer .box .line {
+    background-color: #9CA3AF20;
+    width: 100%;
+    height: 1px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.profilcontainer .box div .left span,
+.profilcontainer .box div .left p {
+    color: var(--gray-color);
+}
+
+/************************
 ====>  CRYPTO LIST  <====
 ************************/
 .cryptocontainer {

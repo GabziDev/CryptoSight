@@ -5,7 +5,7 @@
     --red-color: #EF4444;
     --gray-color: #9CA3AF;
     --white-color: #F9FAFB;
-    --transition-hover: 200ms ease all;
+    --transition-hover: 100ms ease all;
 }
 
 @font-face {
@@ -166,6 +166,27 @@ h1 {
 .purpleBtn.active {
     background-color: #8B5CF650;
     color: var(--purple-color)
+}
+
+.redBtn {
+    font-family: Montserrat-Regular;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    height: 30px;
+    padding: 0 10px;
+    cursor: pointer;
+    background-color: #EF444430;
+    border: none;
+    border-radius: 5px;
+    color: #EF444470;
+    transition: var(--transition-hover);
+}
+
+.redBtn:hover {
+    background-color: #EF444450;
+    color: var(--red-color);
 }
 
 .grayBtn {

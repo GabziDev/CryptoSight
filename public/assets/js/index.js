@@ -197,6 +197,15 @@ const toggleFavorite = async (symbol) => {
         } else {
             favorites.push(symbol);
         }
+    } else {
+        const registerModal = document.querySelector('[data-type="register"]');
+        if (registerModal) {
+            document.querySelectorAll('#modals > [data-type]').forEach(modal => {
+                modal.style.display = "none";
+            });
+
+            registerModal.style.display = "flex";
+        }
     }
 };
 

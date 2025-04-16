@@ -16,12 +16,12 @@ async function fetchData() {
 
     if (response.ok) {
         checkIfFavorite(data.symbol);
-    
+
         const favoriteButton = document.querySelector('#favoriteBtn');
         favoriteButton.addEventListener('click', () => {
             toggleFavorite(data.symbol);
         });
-    
+
         document.title = `${data.name} Crypto - CryptoSight`;
         document.getElementById("cryptoImage").src = data.image.small;
         document.getElementById("cryptoNom").textContent = data.name;
@@ -249,9 +249,17 @@ async function toggleFavorite(coinId) {
     if (response.ok) {
         isFavorite = !isFavorite;
         updateFavoriteButton();
+    } else {
+        const registerModal = document.querySelector('[data-type="register"]');
+        if (registerModal) {
+            document.querySelectorAll('#modals > [data-type]').forEach(modal => {
+                modal.style.display = "none";
+            });
+
+            registerModal.style.display = "flex";
+        }
     }
 }
-
 
 function updateFavoriteButton() {
     const favoriteButton = document.querySelector('#favoriteBtn');

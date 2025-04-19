@@ -1,4 +1,5 @@
 import { pushNotification } from './notifications.js';
+const returnBackBtn = document.querySelectorAll("#returnBack");
 
 document.addEventListener("DOMContentLoaded", async (e) => {
     const response = await fetch("/api/user/info", {
@@ -46,12 +47,16 @@ document.getElementById("deleteAccount").addEventListener("click", async (e) => 
     }
 });
 
-document.getElementById("returnBack").addEventListener("click", e => {
-    e.preventDefault();
-    
-    if (document.referrer === "") {
-        window.location.href = "index.html";
-    } else {
-        window.history.back();
-    }
-});
+(function () {
+    returnBackBtn.forEach(btn => {
+        btn.addEventListener("click", e => {
+            e.preventDefault();
+
+            if (document.referrer === "") {
+                window.location.href = "index.html";
+            } else {
+                window.history.back();
+            }
+        });
+    });
+})();

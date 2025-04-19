@@ -35,7 +35,7 @@ services:
       - ./server:/app/server
       - ./public:/app/public
       - /app/server/node_modules
-      - .env:/app/server/.env
+      - ./ .env:/app/server/.env
 
 volumes:
   db_data:
